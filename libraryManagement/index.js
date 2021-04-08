@@ -5,6 +5,8 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 // require all routers 
+const userRouter = require('./src/routes/user');
+const fileUploadRouter = require('./src/routes/fileUploader');
 
 app.use(express.json()); 
 
@@ -20,6 +22,8 @@ mongoose.connect(url, {
     .then(() => console.log('mongodb server connected...'))
     .catch(err => console.log(err))
 
-// app.use('/user', userRouter)
+app.use('/user', userRouter);
+app.use('/upload', fileUploadRouter);
+
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`server listening on port ${port}`))
