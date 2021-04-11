@@ -16,15 +16,16 @@ const registerController = async (req, res) => {
             })
         }
         else {
-            const { userName, userType, email, password } = req.body;
+            const { userName, userType, address, email, password } = req.body;
 
-            var hashedPassword = await bcrypt.hash(password, 10);
+            // var hashedPassword = await bcrypt.hash(password, 10);
 
             let user = new User({
                 userName,
                 userType,
+                address,
                 email,
-                password: hashedPassword
+                password
             });
 
             let result = await user.save();
@@ -82,7 +83,63 @@ const loginController = async (req, res) => {
     }
 }
 
+const userUpdateController = async(req, res) => {
+    try {
+        const id = req.params.id;
+        await User.findByIdAndUpdate(
+            {_id : id},
+            {
+                $set: req.body
+            },
+            { multi: true }
+        )
+        return res.json({
+            message: 'user updated successfully',
+            updatedResult: req.body
+        })
+    }
+    catch(error) {
+        res.json({error})
+    }
+}
+
+const userDelete = async(req, res) => {
+    try{
+        const id = req.params.id;
+        await User.findByIdAndUpdate(
+            {_id: id},
+            {
+                $set: { isDeleted: true }
+            }
+        );
+        return res.json({
+            message: 'user temporary deleted'
+        })
+    }
+    catch(error) {
+        res.json({error})
+    }
+}
+
+const deleteUserPermanently = async(req, res) => {
+    try {
+        const id = req.params.id;
+        await User.findOneAndRemove({_id: id})
+        return res.json({
+            message: 'user deleted'
+        })
+    }
+    catch(error) {
+        res.json({error})
+    }
+}
+
+
+
 module.exports = {
     registerController,
-    loginController
+    loginController,
+    userUpdateController,
+    userDelete,
+    deleteUserPermanently
 }

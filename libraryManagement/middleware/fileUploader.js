@@ -1,4 +1,5 @@
 const multer = require('multer');
+const path = require('path')
 
 const fileStorageEngine = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -8,9 +9,10 @@ const fileStorageEngine = multer.diskStorage({
         cb(null, Date.now()+'-'+ file.originalname)
     }
 })
-
+const maxSize = 10000000; // 10mb
 const upload = multer({
-    storage: fileStorageEngine
+    storage: fileStorageEngine,
+    limits: { fieldSize: maxSize }
 })
 
 module.exports = upload;

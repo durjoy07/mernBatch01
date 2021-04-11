@@ -3,6 +3,12 @@ const fileUploadController = async(req, res) => {
     res.send('file uploaded successfully')
 }
 
+const multipleFileUploadController = async(req, res) => {
+    console.log(req.files);
+    res.send('file uploaded done')
+}
+
 module.exports = {
-    fileUploadController
+    fileUploadController,
+    multipleFileUploadController
 }

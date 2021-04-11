@@ -10,6 +10,7 @@ const librarySchema = new Schema({
     },
     bookImage: String,
     bookFile: String,
+    keyWords: [String],
     isActivated: {
         type: Boolean,
         default: false
