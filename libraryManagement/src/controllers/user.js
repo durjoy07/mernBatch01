@@ -134,6 +134,69 @@ const deleteUserPermanently = async(req, res) => {
     }
 }
 
+const updatePasswordController = async(req, res) => {
+    try {
+        const id = req.params.id;
+        const { oldPassword, newPassword, confirmNewPassword } = req.body;
+        const query = {
+            _id: id,
+            isDeleted: false
+        }
+        const user = await User.findOne(query);
+        if(user) {
+            const isValid = await bcrypt.compare(oldPassword, user.password);
+            if(isValid) {
+                if(newPassword ===  confirmNewPassword) {
+                    var hashedPassword = await bcrypt.hash(newPassword, 10);
+                    await User.findOneAndUpdate(
+                        {_id: id},
+                        {
+                            $set: {
+                                password: hashedPassword
+                            }
+                        }
+                    )
+                }
+                else {
+                    res.json({
+                        message: 'new password and confirmNewPassword does not match'
+                    })
+                }
+            }
+            else{
+                res.json({
+                    message: 'password does not match'
+                })
+            }
+        }
+        else {
+            res.json({
+                message: 'User not found'
+            })
+        }
+        return res.json({
+            message: 'password updated successfully'
+        })
+    }
+    catch(error) {
+        res.json({error})
+    }
+}
+
+const allUser = async(req,res) => {
+    try{
+    const user = await User.find();
+    res.json({
+        user
+    })
+}
+catch(error) {
+    res.json({
+        error
+    })
+}
+}
+
 
 
 module.exports = {
@@ -141,5 +204,7 @@ module.exports = {
     loginController,
     userUpdateController,
     userDelete,
-    deleteUserPermanently
+    deleteUserPermanently,
+    updatePasswordController,
+    allUser
 }
