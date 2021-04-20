@@ -21,6 +21,10 @@ const userSchema = new Schema({
         unique: true
     },
     password: String,
+    resetLink: {
+        type: String, 
+        default: ''
+    },
     isDeleted: {
         type: Boolean,
         default: false

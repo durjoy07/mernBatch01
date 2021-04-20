@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
 const { userValidator } = require('../../validator/user');
 
 
@@ -83,11 +84,11 @@ const loginController = async (req, res) => {
     }
 }
 
-const userUpdateController = async(req, res) => {
+const userUpdateController = async (req, res) => {
     try {
         const id = req.params.id;
         await User.findByIdAndUpdate(
-            {_id : id},
+            { _id: id },
             {
                 $set: req.body
             },
@@ -98,16 +99,16 @@ const userUpdateController = async(req, res) => {
             updatedResult: req.body
         })
     }
-    catch(error) {
-        res.json({error})
+    catch (error) {
+        res.json({ error })
     }
 }
 
-const userDelete = async(req, res) => {
-    try{
+const userDelete = async (req, res) => {
+    try {
         const id = req.params.id;
         await User.findByIdAndUpdate(
-            {_id: id},
+            { _id: id },
             {
                 $set: { isDeleted: true }
             }
@@ -116,25 +117,25 @@ const userDelete = async(req, res) => {
             message: 'user temporary deleted'
         })
     }
-    catch(error) {
-        res.json({error})
+    catch (error) {
+        res.json({ error })
     }
 }
 
-const deleteUserPermanently = async(req, res) => {
+const deleteUserPermanently = async (req, res) => {
     try {
         const id = req.params.id;
-        await User.findOneAndRemove({_id: id})
+        await User.findOneAndRemove({ _id: id })
         return res.json({
             message: 'user deleted'
         })
     }
-    catch(error) {
-        res.json({error})
+    catch (error) {
+        res.json({ error })
     }
 }
 
-const updatePasswordController = async(req, res) => {
+const updatePasswordController = async (req, res) => {
     try {
         const id = req.params.id;
         const { oldPassword, newPassword, confirmNewPassword } = req.body;
@@ -143,13 +144,13 @@ const updatePasswordController = async(req, res) => {
             isDeleted: false
         }
         const user = await User.findOne(query);
-        if(user) {
+        if (user) {
             const isValid = await bcrypt.compare(oldPassword, user.password);
-            if(isValid) {
-                if(newPassword ===  confirmNewPassword) {
+            if (isValid) {
+                if (newPassword === confirmNewPassword) {
                     var hashedPassword = await bcrypt.hash(newPassword, 10);
                     await User.findOneAndUpdate(
-                        {_id: id},
+                        { _id: id },
                         {
                             $set: {
                                 password: hashedPassword
@@ -163,7 +164,7 @@ const updatePasswordController = async(req, res) => {
                     })
                 }
             }
-            else{
+            else {
                 res.json({
                     message: 'password does not match'
                 })
@@ -178,27 +179,180 @@ const updatePasswordController = async(req, res) => {
             message: 'password updated successfully'
         })
     }
-    catch(error) {
-        res.json({error})
+    catch (error) {
+        res.json({ error })
     }
 }
 
-const allUser = async(req,res) => {
-    try{
-    const user = await User.find();
-    res.json({
-        user
-    })
-}
-catch(error) {
-    res.json({
-        error
-    })
-}
+const allUser = async (req, res) => {
+    try {
+        const user = await User.find();
+        res.json({
+            user
+        })
+    }
+    catch (error) {
+        res.json({
+            error
+        })
+    }
 }
 
+const updateAddressController = async (req, res) => {
+    try {
+        const { division, zipCode } = req.body.address;
+        const id = req.params.id;
+        await User.findOneAndUpdate(
+            { _id: id },
+            {
+                $set: {
+                    'address.division': division,
+                    'address.zipCode': zipCode
+                }
+            }
+        )
 
+        return res.json({
+            message: 'user address updated successfully'
+        })
 
+    }
+    catch (error) {
+        res.json({
+            error
+        })
+    }
+
+}
+
+const paginationController = async (req, res, next) => {
+    try {
+        let { page } = req.params
+        const limit = 5;
+
+        const skip = (page - 1) * limit;
+        const users = await User.find().limit(limit).skip(skip);
+        if (users.length) {
+            res.status(200).json({
+                users
+            });
+        }
+        else {
+            res.status(200).json({
+                message: 'No user found'
+            })
+        }
+    } catch (err) {
+        res.status(500).json({
+            message: "server error from filter",
+            err
+        })
+    }
+}
+
+const forgotPassword = async (req, res) => {
+    try {
+        const secretKey = process.env.JWT_SECRETE;
+        const { email } = req.body;
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({
+                message: 'User with this email does not exists'
+            })
+        }
+
+        const token = jwt.sign({ _id: user._id }, secretKey, { expiresIn: '5m' });
+        await user.updateOne({ resetLink: token })
+
+        //==================== Nodemailer ======================
+
+        //=============== First Step =============================
+        // let transporter = nodemailer.createTransport({
+        //     service: 'gmail',
+        //     auth: {
+        //         user: 'myemail@gmail.com',
+        //         pass: "1654646"
+        //     }
+        // })
+
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.ethereal.email',
+            port: 587,
+            secure: false,
+            auth: {
+                user: 'sarina.feeney15@ethereal.email',
+                pass: '5PxK5CCDEyTtqm6dN1'
+            }
+        });
+
+        //================ Second step ======================
+        let mailOptions = {
+            from: "nexttopperofficial@gmail.com",
+            to: "naks.studycare@gmail.com",
+            subject: "Reset Password Link",
+            text: token,
+            html: `<button>Click me</button>`
+        }
+
+        //================= Third step ==================
+
+        await transporter.sendMail(mailOptions, function (err, data) {
+            if (err) {
+                return res.json({
+                    message: 'email sending failed',
+                    err
+                })
+                console.log(err);
+            }
+            else {
+                console.log(data)
+                return res.json({
+                    message: 'Email has been send successfully'
+                })
+            }
+        })
+    }
+    catch (error) {
+        res.json({ error })
+    }
+}
+
+const resetPasswordController = async (req, res) => {
+    try {
+        const secretKey = process.env.JWT_SECRETE;
+        const { token, newPassword } = req.body;
+        var hashedPassword = await bcrypt.hash(newPassword, 10);
+        const isVerfied = jwt.verify(token, secretKey);
+
+        if (isVerfied) {
+            const user = await User.findOne({ resetLink: token });
+            if (user) {
+                await user.updateOne({
+                    password: hashedPassword,
+                    resetLink: ''
+                })
+                return res.json({
+                    message: 'Password reset succefully'
+                })
+            }
+            else {
+                return res.json({
+                    message: 'User not found for this token'
+                })
+            }
+        }
+        else {
+            return res.json({
+                message: 'Incorrect token or it is expired'
+            })
+        }
+    }
+    catch (error) {
+        res.josn({
+            error
+        })
+    }
+}
 module.exports = {
     registerController,
     loginController,
@@ -206,5 +360,9 @@ module.exports = {
     userDelete,
     deleteUserPermanently,
     updatePasswordController,
-    allUser
+    allUser,
+    updateAddressController,
+    paginationController,
+    forgotPassword,
+    resetPasswordController
 }
