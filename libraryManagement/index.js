@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 // require all routers 
 const userRouter = require('./src/routes/user');
+const libraryRouter = require('./src/routes/library');
 const fileUploadRouter = require('./src/routes/fileUploader');
 
 app.use(express.json()); 
@@ -24,6 +25,7 @@ mongoose.connect(url, {
 
 app.use('/user', userRouter);
 app.use('/upload', fileUploadRouter);
+app.use('/library', libraryRouter);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`server listening on port ${port}`))

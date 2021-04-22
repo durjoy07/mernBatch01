@@ -11,6 +11,12 @@ const librarySchema = new Schema({
     bookImage: String,
     bookFile: String,
     keyWords: [String],
+    availableShop: [
+        {
+            district: String,
+            shopName: String
+        }
+    ],
     isActivated: {
         type: Boolean,
         default: false
