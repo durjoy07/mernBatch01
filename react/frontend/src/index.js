@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MyClassComp from './component/MyClassComp';
+import Greet from './component/Greet';
+// import Hello from './component/Hello';
+// import Hi from './component/Hi';
+// import MyClassComp from './component/MyClassComp';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -8,7 +11,19 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <MyClassComp />
+    {/* <MyClassComp /> */}
+    {/* <Hello />
+    <Hi /> */}
+    <Greet name="Next Toppers" age={10}> 
+      <h1>I am Next Topper</h1>
+      <h2>hello h2</h2>
+     </Greet>
+    <Greet name="Sakib" age={12}> 
+      <button>
+        click me
+      </button>
+    </Greet>
+    <Greet name="Tamim" age={14}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
