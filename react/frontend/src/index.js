@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Greet from './component/Greet';
+import StateComp from './component/StateComp';
+// import PropsClass from './component/PropsClass';
+// import Greet from './component/Greet';
 // import Hello from './component/Hello';
 // import Hi from './component/Hi';
 // import MyClassComp from './component/MyClassComp';
@@ -14,7 +16,7 @@ ReactDOM.render(
     {/* <MyClassComp /> */}
     {/* <Hello />
     <Hi /> */}
-    <Greet name="Next Toppers" age={10}> 
+    {/* <Greet name="Next Toppers" age={10}> 
       <h1>I am Next Topper</h1>
       <h2>hello h2</h2>
      </Greet>
@@ -23,7 +25,14 @@ ReactDOM.render(
         click me
       </button>
     </Greet>
-    <Greet name="Tamim" age={14}/>
+    <Greet name="Tamim" age={14}/> */}
+
+{/* <PropsClass name="Sakib" age={12} >
+    <h1>Hello</h1>
+    <button>Click here</button>
+  </PropsClass> */}
+  <StateComp />
+  
   </React.StrictMode>,
   document.getElementById('root')
 );
