@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import StateComp from './component/StateComp';
+import ConditionalRenderComp from './component/ConditionalRenderComp';
+// import ParentComp from './component/ParentComp';
+// import BindingEventComp from './component/BindingEventComp';
+// import StateComp from './component/StateComp';
 // import PropsClass from './component/PropsClass';
 // import Greet from './component/Greet';
 // import Hello from './component/Hello';
@@ -31,7 +34,11 @@ ReactDOM.render(
     <h1>Hello</h1>
     <button>Click here</button>
   </PropsClass> */}
-  <StateComp />
+  {/* <StateComp /> */}
+  {/* <BindingEventComp /> */}
+  {/* <ParentComp /> */}
+
+  <ConditionalRenderComp />
   
   </React.StrictMode>,
   document.getElementById('root')
