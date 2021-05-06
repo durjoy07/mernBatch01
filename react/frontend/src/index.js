@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ConditionalRenderComp from './component/ConditionalRenderComp';
+import ListRenderComp from './component/ListRenderComp';
+// import ConditionalRenderComp from './component/ConditionalRenderComp';
 // import ParentComp from './component/ParentComp';
 // import BindingEventComp from './component/BindingEventComp';
 // import StateComp from './component/StateComp';
@@ -38,7 +39,8 @@ ReactDOM.render(
   {/* <BindingEventComp /> */}
   {/* <ParentComp /> */}
 
-  <ConditionalRenderComp />
+  {/* <ConditionalRenderComp /> */}
+  <ListRenderComp />
   
   </React.StrictMode>,
   document.getElementById('root')

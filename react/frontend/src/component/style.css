@@ -1,0 +1,21 @@
+.container-blue {
+    background-color: rgb(6, 1, 54);
+    height: 50px;
+    width: 350px;
+    box-sizing: border-box;
+    box-shadow: 2px solid rgba(0, 0, 0, 0.452);
+}
+.container-black {
+    background-color: rgb(209, 96, 3);
+    height: 50px;
+    width: 350px;
+    box-sizing: border-box;
+    box-shadow: 2px solid rgba(0, 0, 0, 0.452);
+}
+
+.text {
+    font-size: 30px;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
