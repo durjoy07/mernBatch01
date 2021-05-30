@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ListRenderComp from './component/ListRenderComp';
+import ControlledForm from './component/ControlledForm';
+// import ListRenderComp from './component/ListRenderComp';
+// import UncontrolledForm from './component/UncontrolledForm';
 // import ConditionalRenderComp from './component/ConditionalRenderComp';
 // import ParentComp from './component/ParentComp';
 // import BindingEventComp from './component/BindingEventComp';
@@ -40,7 +42,9 @@ ReactDOM.render(
   {/* <ParentComp /> */}
 
   {/* <ConditionalRenderComp /> */}
-  <ListRenderComp />
+  {/* <ListRenderComp /> */}
+  {/* <UncontrolledForm /> */}
+  <ControlledForm />
   
   </React.StrictMode>,
   document.getElementById('root')
