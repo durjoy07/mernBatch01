@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import UnmountingLifecycle from './component/UnmountingLifecycle';
 // import ControlledForm from './component/ControlledForm';
 // import LifecycleParentComp from './component/LifecycleParentComp';
-import LifeCylcleUpdateParent from './component/LifeCylcleUpdateParent';
+// import LifeCylcleUpdateParent from './component/LifeCylcleUpdateParent';
 // import ListRenderComp from './component/ListRenderComp';
 // import UncontrolledForm from './component/UncontrolledForm';
 // import ConditionalRenderComp from './component/ConditionalRenderComp';
@@ -48,7 +49,8 @@ ReactDOM.render(
   {/* <UncontrolledForm /> */}
   {/* <ControlledForm /> */}
   {/* <LifecycleParentComp /> */}
-  <LifeCylcleUpdateParent />
+  {/* <LifeCylcleUpdateParent /> */}
+  <UnmountingLifecycle />
   
   </React.StrictMode>,
   document.getElementById('root')
