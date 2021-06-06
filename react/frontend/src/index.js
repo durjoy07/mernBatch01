@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import UnmountingLifecycle from './component/UnmountingLifecycle';
+import MainComp from './component/MainComp';
+// import TableComp from './component/TableComp';
+// import FragmentComp from './component/FragmentComp';
+// import UnmountingLifecycle from './component/UnmountingLifecycle';
 // import ControlledForm from './component/ControlledForm';
 // import LifecycleParentComp from './component/LifecycleParentComp';
 // import LifeCylcleUpdateParent from './component/LifeCylcleUpdateParent';
@@ -50,7 +53,10 @@ ReactDOM.render(
   {/* <ControlledForm /> */}
   {/* <LifecycleParentComp /> */}
   {/* <LifeCylcleUpdateParent /> */}
-  <UnmountingLifecycle />
+  {/* <UnmountingLifecycle /> */} 
+  {/* <FragmentComp /> */}
+  {/* <TableComp /> */}
+  <MainComp />
   
   </React.StrictMode>,
   document.getElementById('root')

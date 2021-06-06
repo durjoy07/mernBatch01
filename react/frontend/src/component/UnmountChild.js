@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
 class UnmountChild extends Component {
+    componentWillUnmount() {
+        console.log('unmount from child............');
+    }
     render() {
         return (
             <>
