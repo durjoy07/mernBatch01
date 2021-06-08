@@ -1,8 +1,9 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
+import MemoComp from './MemoComp';
 import NormalComp from './NormalComp'
 import PureComp from './PureComp';
 
-class MainComp extends PureComponent {
+class MainComp extends Component {
     constructor(props) {
         super(props)
     
@@ -41,8 +42,11 @@ class MainComp extends PureComponent {
             <div>
                 {/* <h1>{this.state.count}</h1>
                 <button onClick={this.clickHandler}>Click</button> */}
-                <PureComp count={this.state.count} />
-                <NormalComp count={this.state.count}/>
+                {/* <PureComp count={this.state.count} />
+                <NormalComp count={this.state.count}/> */}
+
+                {/* ============================================= */}
+                <MemoComp />
             </div>
         )
     }

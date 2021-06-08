@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainComp from './component/MainComp';
+import FocusComp from './component/FocusComp';
+import ParentComponent from './component/ParentComponent';
+// import MainComp from './component/MainComp';
+// import RefsComp from './component/RefsComp';
 // import TableComp from './component/TableComp';
 // import FragmentComp from './component/FragmentComp';
 // import UnmountingLifecycle from './component/UnmountingLifecycle';
@@ -56,7 +59,10 @@ ReactDOM.render(
   {/* <UnmountingLifecycle /> */} 
   {/* <FragmentComp /> */}
   {/* <TableComp /> */}
-  <MainComp />
+  {/* <MainComp /> */}
+  {/* <RefsComp /> */}
+  {/* <FocusComp /> */}
+  <ParentComponent />
   
   </React.StrictMode>,
   document.getElementById('root')
