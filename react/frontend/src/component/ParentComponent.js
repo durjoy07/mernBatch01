@@ -6,7 +6,7 @@ class ParentComponent extends Component {
     render() {
         return (
             <div>
-                <ClickComp />
+                <ClickComp name="Next" age={25} />
                 <HoverComp />
             </div>
         )

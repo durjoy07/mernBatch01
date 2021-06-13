@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FocusComp from './component/FocusComp';
-import ParentComponent from './component/ParentComponent';
+import AllColorComp from './component/AllColorComp';
+// import FocusComp from './component/FocusComp';
+// import ParentComponent from './component/ParentComponent';
 // import MainComp from './component/MainComp';
 // import RefsComp from './component/RefsComp';
 // import TableComp from './component/TableComp';
@@ -62,7 +63,8 @@ ReactDOM.render(
   {/* <MainComp /> */}
   {/* <RefsComp /> */}
   {/* <FocusComp /> */}
-  <ParentComponent />
+  {/* <ParentComponent /> */}
+  <AllColorComp />
   
   </React.StrictMode>,
   document.getElementById('root')
