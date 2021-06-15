@@ -5,17 +5,20 @@ class ErrorBoundary extends Component {
         super(props)
     
         this.state = {
-             hasError: false
+             hasError: false,
+             age: 0
         }
     }
 
     static getDerivedStateFromError(error) {
         return {
-            hasError: true
+           hasError: true,
+           age: 10
         }
     }
     
     render() {
+        console.log(this.state.age);
         if(this.state.hasError) {
             return <h1>Maybe some errors occured</h1>
         }
