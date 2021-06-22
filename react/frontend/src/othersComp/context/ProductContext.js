@@ -7,7 +7,7 @@
 import React from 'react';
 
 // first step
-const ProductContext = React.createContext('Laptop');
+const ProductContext = React.createContext('Mobile');
 
 // second step
 const ProductProvider = ProductContext.Provider;

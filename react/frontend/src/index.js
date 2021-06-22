@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import CountComp from './HooksComp/CountComp';
+import StateHook from './HooksComp/StateHook';
 // import ParentOfClickAndHover from './component/ParentOfClickAndHover';
 // import AllColorComp from './component/AllColorComp';
 // import ClickCounter from './component/ClickCounter';
@@ -27,8 +29,9 @@ import ReactDOM from 'react-dom';
 // import Hi from './component/Hi';
 // import MyClassComp from './component/MyClassComp';
 import './index.css';
+// import PostComp from './othersComp/PostComp';
 // import ParentComp from './othersComp/ParentComp';
-import GetComp from './othersComp/GetComp';
+// import GetComp from './othersComp/GetComp';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -77,7 +80,10 @@ ReactDOM.render(
   <ColorComponent render={(c)=> (c=='Blue')? 'This is valid color': 'invalid'} /> */}
   {/* <ParentOfClickAndHover /> */}
   {/* <ParentComp/> */}
-  <GetComp />
+  {/* <GetComp /> */}
+  {/* <PostComp /> */}
+  {/* <StateHook /> */}
+  <CountComp />
   </React.StrictMode>,
   document.getElementById('root')
 );
