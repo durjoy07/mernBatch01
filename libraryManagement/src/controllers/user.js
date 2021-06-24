@@ -2,14 +2,13 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
+const fs = require('fs');
 const { userValidator } = require('../../validator/user');
 
 
 const registerController = async (req, res) => {
     try {
         const { error, value } = userValidator.validate(req.body);
-        console.log('error', error);
-        console.log('value', value);
         if (error) {
             res.status(400).json({
                 message: "validation error",
@@ -17,13 +16,27 @@ const registerController = async (req, res) => {
             })
         }
         else {
-            const { userName, userType, address, email, password } = req.body;
+            const { userName, userType, image, address, email, password } = req.body;
+            let base64DataOfImage = image.split(';base64,').pop();
+            let fileExtension = image.split(';')[0].split('/')[1];
+            let imageFileName = `user-image${+new Date()}.${fileExtension}`;
+            let pathName = `http://localhost:5000/${imageFileName}`;
+
+            fs.writeFile(`${__dirname}/../../public/${imageFileName}`, base64DataOfImage, {encoding: 'base64'}, function(err){
+                if(err) {
+                    console.log('error: ', err);
+                }
+                else {
+                    console.log('created');
+                }
+            })
 
             // var hashedPassword = await bcrypt.hash(password, 10);
 
             let user = new User({
                 userName,
                 userType,
+                image: pathName,
                 address,
                 email,
                 password

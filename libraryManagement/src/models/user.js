@@ -20,6 +20,7 @@ const userSchema = new Schema({
         type: String,
         unique: true
     },
+    image: String,
     password: String,
     resetLink: {
         type: String, 

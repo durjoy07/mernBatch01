@@ -12,6 +12,7 @@ const userValidator = Joi.object({
     userName: Joi.string().required()
     .alphanum().min(4).max(15),
     userType: Joi.string(),
+    image: Joi.string(),
     address: addressSchema,
     email: Joi.string().trim().required()
         .regex(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
