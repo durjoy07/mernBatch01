@@ -1,15 +1,15 @@
 import axios from 'axios'
 import React, { Component } from 'react'
+import CustomImageUploader from '../utils/CustomImageUploader'
 
 class PostComp extends Component {
     constructor(props) {
         super(props)
     
         this.state = {
-            name: '',
+            userName: '',
             email: '',
-            division: '',
-            district: ''
+            image: ''
           }
     }
     
@@ -19,19 +19,28 @@ class PostComp extends Component {
         })
     }
 
+    imageHandler = (file) => {
+        let reader = new FileReader();
+
+        reader.onloadend = () => {
+        this.setState({
+            image: reader.result
+        })
+        };
+        reader.readAsDataURL(file);
+    }
+
     submitHandler = (e) => {
         e.preventDefault();
-        const {name, email, division, district} = this.state;
+        const {userName, email, image, password} = this.state;
         let data = {
-            name,
+            userName,
             email,
-            address: {
-                division,
-                district
-            }
+            image,
+            password
         }
         console.log(data);
-        axios.post('http://localhost:5000/test/add-test', data)
+        axios.post('http://localhost:5000/user/register', data)
         .then(res=> {
             console.log(res);
         })
@@ -39,16 +48,19 @@ class PostComp extends Component {
     }
 
     render() {
-        const {name, email, division, district} = this.state;
+        const {userName, email, image, password} = this.state;
+        console.log(image);
         return (
             <div style={{marginLeft: '300px'}}>
+                <label>User Name: </label>
                 <input 
                     type='text'
-                    value={name}
-                    name='name'
+                    value={userName}
+                    name='userName'
                     onChange={(e)=> this.changeHandler(e)}
                 ></input>
                 <br></br>
+                <label>Email:</label>
                 <input 
                     type='email'
                     value={email}
@@ -56,20 +68,15 @@ class PostComp extends Component {
                     onChange={(e)=> this.changeHandler(e)}
                 ></input>
                 <br></br>
+                <label>Password:</label>
                 <input 
-                    type='text'
-                    value={division}
-                    name='division'
+                    type='password'
+                    value={password}
+                    name='password'
                     onChange={(e)=> this.changeHandler(e)}
                 ></input>
                 <br></br>
-                <input 
-                    type='text'
-                    value={district}
-                    name='district'
-                    onChange={(e)=> this.changeHandler(e)}
-                ></input>
-                <br></br>
+                <CustomImageUploader customOnHanldeImage={this.imageHandler} />
                 <button onClick={(e)=> this.submitHandler(e)}>Submit</button>
             </div>
         )

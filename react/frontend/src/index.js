@@ -31,7 +31,7 @@ import StateHook from './HooksComp/StateHook';
 import './index.css';
 // import PostComp from './othersComp/PostComp';
 // import ParentComp from './othersComp/ParentComp';
-// import GetComp from './othersComp/GetComp';
+import GetComp from './othersComp/GetComp';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -80,10 +80,10 @@ ReactDOM.render(
   <ColorComponent render={(c)=> (c=='Blue')? 'This is valid color': 'invalid'} /> */}
   {/* <ParentOfClickAndHover /> */}
   {/* <ParentComp/> */}
-  {/* <GetComp /> */}
+  <GetComp />
   {/* <PostComp /> */}
   {/* <StateHook /> */}
-  <CountComp />
+  {/* <CountComp /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {option} from '../config.js'
+// import CustomImageUploader from '../utils/CustomImageUploader.js';
 
 class GetComp extends Component {
     constructor(props) {
@@ -11,15 +13,30 @@ class GetComp extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://api.digitalpathshalabd.com/district/all')
+        axios.get('http://localhost:5000/user/all-user', option)
         .then(res=>{
             this.setState({
-                data: res.data
+                data: res.data.user
             })
-            // console.log('My data: ',res.data);
+            console.log('My data: ',res.data.user);
         })
         .catch(err=>console.log(err))
     }
+
+    // imageHandler = (file) => {
+    //     console.log('file is: ', file);
+    // }
+
+//    onImageChange = (file) => {
+//     let reader = new FileReader();
+//     reader.onloadend = () => {
+//       this.setState({
+//         image: reader.result
+//       })
+//     };
+//     reader.readAsDataURL(file);
+//   }
+
     
     render() {
         const {data} = this.state;
@@ -31,9 +48,11 @@ class GetComp extends Component {
                         {
                             data.map(ele=> (
                                 <React.Fragment key={ele.id}>
-                                <p ><b>District:</b> {ele.name}</p>
+                                <img style={{height: "300px", width: "500px"}} src={ele.image} alt='user'/>
+                                <p ><b>user:</b> {ele.userName}</p>
+                                <p><b>Email:</b>{ele.email}</p>
                                 <br></br>
-                                <p><b>জেলা:</b>{ele.bn_name}</p>
+                                {/* <CustomImageUploader customOnHanldeImage={this.imageHandler} /> */}
                                 </React.Fragment>
                             ))
                         }
