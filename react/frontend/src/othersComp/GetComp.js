@@ -13,7 +13,7 @@ class GetComp extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/user/all-user', option)
+        axios.get('http://localhost:5000/user/all-user', option )
         .then(res=>{
             this.setState({
                 data: res.data.user
