@@ -24,7 +24,7 @@ router.put('/update/:id', userUpdateController);
 router.put('/delete/:id',Auth, permission(['librarian']),  userDelete);
 router.delete('/delete-permanent/:id', Auth, permission(['librarian']), deleteUserPermanently);
 router.put('/change-password/:id', updatePasswordController)
-router.get('/all-user',permission(['student']), allUser),
+router.get('/all-user',permission(['teacher', 'student']), allUser),
 router.put('/update-address/:id', updateAddressController);
 router.get('/get-user/:page', paginationController);
 router.post('/forgot-password', forgotPassword);
