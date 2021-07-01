@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// import UseStatewithArray from './HooksComp/UseStatewithArray';
+// import UseStatewithObject from './HooksComp/UseStatewithObject';
+// import ClassComp1 from './HooksComp/ClassComp1';
+import UseEffect1 from './HooksComp/UseEffect1';
 // import CountComp from './HooksComp/CountComp';
 // import StateHook from './HooksComp/StateHook';
 // import ParentOfClickAndHover from './component/ParentOfClickAndHover';
@@ -29,10 +33,10 @@ import ReactDOM from 'react-dom';
 // import Hi from './component/Hi';
 // import MyClassComp from './component/MyClassComp';
 import './index.css';
-import LoginComp from './othersComp/LoginComp';
+// import LoginComp from './othersComp/LoginComp';
 // import PostComp from './othersComp/PostComp';
 // import ParentComp from './othersComp/ParentComp';
-import GetComp from './othersComp/GetComp';
+// import GetComp from './othersComp/GetComp';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -53,42 +57,47 @@ ReactDOM.render(
     </Greet>
     <Greet name="Tamim" age={14}/> */}
 
-{/* <PropsClass name="Sakib" age={12} >
+    {/* <PropsClass name="Sakib" age={12} >
     <h1>Hello</h1>
     <button>Click here</button>
   </PropsClass> */}
-  {/* <StateComp /> */}
-  {/* <BindingEventComp /> */}
-  {/* <ParentComp /> */}
+    {/* <StateComp /> */}
+    {/* <BindingEventComp /> */}
+    {/* <ParentComp /> */}
 
-  {/* <ConditionalRenderComp /> */}
-  {/* <ListRenderComp /> */}
-  {/* <UncontrolledForm /> */}
-  {/* <ControlledForm /> */}
-  {/* <LifecycleParentComp /> */}
-  {/* <LifeCylcleUpdateParent /> */}
-  {/* <UnmountingLifecycle /> */} 
-  {/* <FragmentComp /> */}
-  {/* <TableComp /> */}
-  {/* <MainComp /> */}
-  {/* <RefsComp /> */}
-  {/* <FocusComp /> */}
-  {/* <ParentComponent /> */}
-  {/* <AllColorComp /> */}
+    {/* <ConditionalRenderComp /> */}
+    {/* <ListRenderComp /> */}
+    {/* <UncontrolledForm /> */}
+    {/* <ControlledForm /> */}
+    {/* <LifecycleParentComp /> */}
+    {/* <LifeCylcleUpdateParent /> */}
+    {/* <UnmountingLifecycle /> */}
+    {/* <FragmentComp /> */}
+    {/* <TableComp /> */}
+    {/* <MainComp /> */}
+    {/* <RefsComp /> */}
+    {/* <FocusComp /> */}
+    {/* <ParentComponent /> */}
+    {/* <AllColorComp /> */}
 
-  {/* <ClickCounter />
+    {/* <ClickCounter />
   <HoverCounter />  
   <ColorComponent render={(c)=> (c=='Blue')? 'This is valid color': 'invalid'} /> */}
-  {/* <ParentOfClickAndHover /> */}
-  {/* <ParentComp/> */}
-  
-  {/* <PostComp /> */}
-  {/* <StateHook /> */}
-  {/* <CountComp /> */}
-  <LoginComp />
-  <GetComp />
+    {/* <ParentOfClickAndHover /> */}
+    {/* <ParentComp/> */}
+
+    {/* <PostComp /> */}
+    {/* <StateHook /> */}
+    {/* <CountComp /> */}
+    {/* <LoginComp />
+  <GetComp /> */}
+    {/* <UseStatewithObject /> */}
+    {/* <UseStatewithArray /> */}
+    
+    {/* <ClassComp1 /> */}
+    <UseEffect1 />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
