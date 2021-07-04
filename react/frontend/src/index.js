@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 // import UseStatewithArray from './HooksComp/UseStatewithArray';
 // import UseStatewithObject from './HooksComp/UseStatewithObject';
 // import ClassComp1 from './HooksComp/ClassComp1';
-import UseEffect1 from './HooksComp/UseEffect1';
+// import UseEffect1 from './HooksComp/UseEffect1';
+// import MousePositionContainer from './HooksComp/MousePositionContainer';
+import DataFetchHooks from './HooksComp/DataFetchHooks';
 // import CountComp from './HooksComp/CountComp';
 // import StateHook from './HooksComp/StateHook';
 // import ParentOfClickAndHover from './component/ParentOfClickAndHover';
@@ -93,9 +95,11 @@ ReactDOM.render(
   <GetComp /> */}
     {/* <UseStatewithObject /> */}
     {/* <UseStatewithArray /> */}
-    
+
     {/* <ClassComp1 /> */}
-    <UseEffect1 />
+    {/* <UseEffect1 /> */}
+    {/* <MousePositionContainer /> */}
+    <DataFetchHooks />
   </React.StrictMode>,
   document.getElementById("root")
 );
