@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import CounterCompOne from './HooksComp/UseReducer/CounterCompOne';
 // import UseStatewithArray from './HooksComp/UseStatewithArray';
 // import UseStatewithObject from './HooksComp/UseStatewithObject';
 // import ClassComp1 from './HooksComp/ClassComp1';
 // import UseEffect1 from './HooksComp/UseEffect1';
 // import MousePositionContainer from './HooksComp/MousePositionContainer';
-import DataFetchHooks from './HooksComp/DataFetchHooks';
+// import DataFetchHooks from './HooksComp/DataFetchHooks';
+// import Parent from './HooksComp/UseContext/Parent';
 // import CountComp from './HooksComp/CountComp';
 // import StateHook from './HooksComp/StateHook';
 // import ParentOfClickAndHover from './component/ParentOfClickAndHover';
@@ -99,7 +101,9 @@ ReactDOM.render(
     {/* <ClassComp1 /> */}
     {/* <UseEffect1 /> */}
     {/* <MousePositionContainer /> */}
-    <DataFetchHooks />
+    {/* <DataFetchHooks /> */} 
+    {/* <Parent /> */}
+    <CounterCompOne />
   </React.StrictMode>,
   document.getElementById("root")
 );
