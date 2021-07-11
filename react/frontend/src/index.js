@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CounterCompOne from './HooksComp/UseReducer/CounterCompOne';
+// import CounterCompOne from './HooksComp/UseReducer/CounterCompOne';
+import Parent from './HooksComp/UseReducer/Parent';
 // import UseStatewithArray from './HooksComp/UseStatewithArray';
 // import UseStatewithObject from './HooksComp/UseStatewithObject';
 // import ClassComp1 from './HooksComp/ClassComp1';
@@ -103,7 +104,8 @@ ReactDOM.render(
     {/* <MousePositionContainer /> */}
     {/* <DataFetchHooks /> */} 
     {/* <Parent /> */}
-    <CounterCompOne />
+    {/* <CounterCompOne /> */}
+    <Parent />
   </React.StrictMode>,
   document.getElementById("root")
 );
