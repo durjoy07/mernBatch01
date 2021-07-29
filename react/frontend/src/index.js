@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import IncrementOne from './CustomHook/IncrementOne';
-import IncrementTwo from './CustomHook/IncrementTwo';
-import RegistrationFrom from './CustomHook/RegistrationFrom';
-import FocusComponent from './HooksComp/FocusComponent';
-import FocusComponentHook from './HooksComp/FocusComponentHook';
+// import IncrementOne from './CustomHook/IncrementOne';
+// import IncrementTwo from './CustomHook/IncrementTwo';
+// import RegistrationFrom from './CustomHook/RegistrationFrom';
+// import FocusComponent from './HooksComp/FocusComponent';
+// import FocusComponentHook from './HooksComp/FocusComponentHook';
+import MainComp from './HooksComp/PerformanceIssues/MainComp';
 // import CounterCompOne from './HooksComp/UseReducer/CounterCompOne';
 import Parent from './HooksComp/UseReducer/Parent';
 // import UseStatewithArray from './HooksComp/UseStatewithArray';
@@ -117,7 +118,8 @@ ReactDOM.render(
     <FocusComponentHook /> */}
     {/* <IncrementOne />
     <IncrementTwo /> */}
-    <RegistrationFrom />
+    {/* <RegistrationFrom /> */}
+    <MainComp />
   </React.StrictMode>,
   document.getElementById("root")
 );
