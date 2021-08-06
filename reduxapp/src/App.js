@@ -1,16 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
-import MobileContainer from './component/MobileContainer';
+import ProductContainer from "./component/ProductContainer";
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import HookMobileContainer from './component/HookMobileContainer';
+import Container from './component/Container';
+// import HookMobileContainer from './component/HookMobileContainer';
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <MobileContainer />
-        <HookMobileContainer />
+        {/* <Container mobile/> */}
+        {/* <Container /> */}
+        <ProductContainer />
+        {/* <HookMobileContainer /> */}
       </div>
     </Provider>
   );
